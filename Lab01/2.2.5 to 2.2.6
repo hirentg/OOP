@@ -1,0 +1,57 @@
+2.5: 
+import java.util.Scanner;
+public class calculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter the first number:");
+        double num1 = input.nextDouble();
+        
+        System.out.println("Enter the second number:");
+        double num2= input.nextDouble();
+        double sum= num1 + num2;
+        double difference= num1 - num2;
+        double product= num1 * num2;
+        double quotient= num1 / num2;
+        
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+        System.out.println("Product: " + product);
+        
+        if (num2 != 0) {
+            System.out.println("Quotient: " + quotient);
+        } else {
+            System.out.println("Cannot divide by zero");
+        }
+        
+        inputReader.close();
+    }
+}
+
+
+2.6: 
+import java.util.Scanner;
+public class linear {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);        
+        System.out.print("Enter 'a': ");
+        double a = input.nextDouble();
+        
+        System.out.print("Enter 'b': ");
+        double b = input.nextDouble();
+
+        if (a == 0) {
+            if (b == 0) {
+                System.out.println("The equation has infinite solutions.");
+            } else 
+            {
+                System.out.println("The equation has no solution.");
+            }
+        } else {
+            double x = -b / a;
+            System.out.println("The solution is: x = " + x);
+        }
+
+        input.close();
+    }
+}
