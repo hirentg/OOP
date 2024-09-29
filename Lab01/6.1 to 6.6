@@ -1,4 +1,4 @@
-6.1:
+	6.1:
 package project1;
 
 import javax.swing.JOptionPane;
@@ -24,4 +24,50 @@ int option = JOptionPane.showConfirmDialog(null,
 		"Do you want to change to first class ticket?", null, JOptionPane.YES_NO_OPTION);
 
 
-  6.2
+	6.2
+package project1;
+import java.util.Scanner;
+public class InputFromKeyboard {
+public static void main(String[] args) {
+	Scanner keyboard = new Scanner (System.in);
+	System.out.println("whats ur name?");
+	String strName = keyboard.nextLine();
+	System.out.println("how old are ya?");
+	int iAge= keyboard.nextInt();
+	System.out.println("how tall are ya (meter) ?");
+	double dHeight = keyboard.nextDouble();
+System.out.println("mr/mrs. " + strName + ", " + iAge + " years old. "
+		+ "Your height is " + dHeight + ".");
+}
+}
+
+
+
+	6.3
+ package triangle;
+
+import java.util.Scanner;
+
+public class triangle {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the height of the triangle: ");
+        int n = input.nextInt();
+        input.close();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= 2 * i - 1; k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+ 	6.4
+
