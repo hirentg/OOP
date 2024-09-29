@@ -30,6 +30,8 @@ public class calculator {
 
 
 2.6: 
+*The first-degree equation (linear equation) with one variable*
+
 import java.util.Scanner;
 public class linear {
     public static void main(String[] args) {
@@ -52,6 +54,94 @@ public class linear {
             System.out.println("The solution is: x = " + x);
         }
 
+        input.close();
+    }
+}
+
+
+*The system of first-degree equations (linear system) with two variables*
+import java.util.Scanner;
+public class linearSystem {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("a1x + b1y = c1");
+        System.out.println("a2x + b2y = c2");
+
+        System.out.print("Enter a1: ");
+        double a1 = input.nextDouble();
+        System.out.print("Enter b1: ");
+        double b1 = input.nextDouble();
+        System.out.print("Enter c1: ");
+        double c1 = input.nextDouble();
+        System.out.print("Enter a2: ");
+        double a2 = input.nextDouble();
+        System.out.print("Enter b2: ");
+        double b2 = input.nextDouble();
+        System.out.print("Enter c2: ");
+        double c2 = input.nextDouble();
+
+        double determinant = a1 * b2 - a2 * b1;
+
+        if (determinant == 0) {
+            if (a1 * c2 == a2 * c1 && b1 * c2 == b2 * c1) {
+                System.out.println("The system has infinite solutions.");
+            } else {
+                System.out.println("The system has no solution.");
+            }
+        } else {
+            double x = (c1 * b2 - c2 * b1)/determinant;
+            double y = (a1 * c2 - a2 * c1)/determinant;
+            System.out.println("The solution is:");
+            System.out.println("x = " + x);
+            System.out.println("y = " + y);
+        }
+        input.close();
+    }
+}
+
+*The second-degree equation with one variable*
+import java.util.Scanner;
+public class Quadratic {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("ax^2 + bx + c = 0");
+
+        System.out.print("Enter a: ");
+        double a = input.nextDouble();
+        System.out.print("Enter b: ");
+        double b = input.nextDouble();
+        System.out.print("Enter c: ");
+        double c = input.nextDouble();
+
+        if (a == 0) {
+            if (b == 0) {
+                if (c == 0) {
+                    System.out.println("The equation has infinite solutions.");
+                } else {
+                    System.out.println("The equation has no solution.");
+                }
+            } else {
+                double x = -c / b;
+                System.out.println("The equation is linear. The solution is: x = " + x);
+            }
+        } else {
+            double discriminant = b*b - 4*a*c;
+
+            if (discriminant > 0) {
+                double x1 = (-b + Math.sqrt(discriminant)) / (2*a);
+                double x2 = (-b - Math.sqrt(discriminant)) / (2*a);
+                System.out.println("The equation has two real roots:");
+                System.out.println("x1 = " + x1);
+                System.out.println("x2 = " + x2);
+            } else if (discriminant == 0) {
+                double x = -b / (2*a);
+                System.out.println("The equation has one real root:");
+                System.out.println("x = " + x);
+            } else{
+                System.out.println("No real number solution");
+            }
+        }
         input.close();
     }
 }
