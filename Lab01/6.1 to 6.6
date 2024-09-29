@@ -70,4 +70,195 @@ public class triangle {
 
 
  	6.4
+package year;
 
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+
+public class year2 {
+    private static final Map<String, String> monthMap = new HashMap<>();
+    static {
+        monthMap.put("january", "01"); monthMap.put("jan", "01"); monthMap.put("1", "01");
+        monthMap.put("february", "02"); monthMap.put("feb", "02"); monthMap.put("2", "02");
+        monthMap.put("march", "03"); monthMap.put("mar", "03"); monthMap.put("3", "03");
+        monthMap.put("april", "04"); monthMap.put("apr", "04"); monthMap.put("4", "04");
+        monthMap.put("may", "05"); monthMap.put("5", "05");
+        monthMap.put("june", "06"); monthMap.put("jun", "06"); monthMap.put("6", "06");
+        monthMap.put("july", "07"); monthMap.put("jul", "07"); monthMap.put("7", "07");
+        monthMap.put("august", "08"); monthMap.put("aug", "08"); monthMap.put("8", "08");
+        monthMap.put("september", "09"); monthMap.put("sep", "09"); monthMap.put("9", "09");
+        monthMap.put("october", "10"); monthMap.put("oct", "10"); monthMap.put("10", "10");
+        monthMap.put("november", "11"); monthMap.put("nov", "11"); monthMap.put("11", "11");
+        monthMap.put("december", "12"); monthMap.put("dec", "12"); monthMap.put("12", "12");
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM yyyy");
+
+        while (true) {
+            System.out.print("Enter month and year (e.g., Feb 2020): ");
+            String input = scanner.nextLine();
+
+            String[] parts = input.split("\\s+", 2);
+            if (parts.length != 2) {
+                System.out.println("Invalid input format. Please enter month and year separated by a space.");
+                continue;
+            }
+
+            String monthInput = parts[0].toLowerCase().replaceAll("[^a-z0-9]", "");
+            String yearInput = parts[1];
+
+            String monthNumber = monthMap.get(monthInput);
+            if (monthNumber == null) {
+                System.out.println("Invalid month. Please try again.");
+                continue;
+            }
+
+            if (!yearInput.matches("\\d+") || Integer.parseInt(yearInput) < 0) {
+                System.out.println("Invalid year. Please enter a non-negative number with all digits.");
+                continue;
+            }
+
+            try {
+                YearMonth yearMonth = YearMonth.parse(monthNumber + " " + yearInput, formatter);
+                int days = yearMonth.lengthOfMonth();
+                System.out.printf("Number of days in %s %s: %d\n", 
+                    yearMonth.getMonth().toString(), yearMonth.getYear(), days);
+            } catch (DateTimeParseException e) {
+                System.out.println("Error parsing date. Please try again.");
+                continue;
+            }
+
+            System.out.print("Do you want to check another month/year? (yes/no): ");
+            String continueInput = scanner.nextLine().toLowerCase();
+            if (!continueInput.equals("yes") && !continueInput.equals("y")) {
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+	6.5
+ package sort;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class sort {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            int[] numbers;
+
+            System.out.print("Do you want to enter the array manually? (yes(y) / no(n)): ");
+            String choice = scanner.nextLine().toLowerCase();
+
+            if (choice.equals("yes") || choice.equals("y")) {
+                numbers = getUserArray(scanner);
+            } else {
+                numbers = new int[]{12, 22, 11, 90};
+                System.out.println("Using constant array: " + Arrays.toString(numbers));
+            }
+
+            Arrays.sort(numbers);
+            System.out.println("Sorted array: " + Arrays.toString(numbers));
+
+            int sum = 0;
+            for (int number : numbers) {
+                sum += number;
+            }
+            double average = (double) sum / numbers.length;
+
+            System.out.println("Sum of array elements: " + sum);
+            System.out.printf("Average of array elements: %.2f%n", average);
+            System.out.print("Do you want to continue? (yes/no): ");
+            String continueChoice = scanner.nextLine().toLowerCase();
+            if (!continueChoice.equals("yes") && !continueChoice.equals("y")) {
+                break;
+            }
+        }
+        scanner.close();
+    }
+    private static int[] getUserArray(Scanner scanner) {
+        System.out.print("Enter the number of elements: ");
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Element " + (i + 1) + ": ");
+            arr[i] = scanner.nextInt();
+        }
+        scanner.nextLine(); 
+        return arr;
+    }
+}
+
+
+
+
+	6.6
+package matrix;
+
+import java.util.Scanner;
+
+public class matrix {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows: ");
+        int row = scanner.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int col = scanner.nextInt();
+
+        int[][] matrix1 = new int[row][col];
+        int[][] matrix2 = new int[row][col];
+        int[][] resultMatrix = new int[row][col];
+
+        System.out.println("Enter elements for the first matrix:");
+        inputMatrix(scanner, matrix1, row, col);
+        System.out.println("Enter elements for the second matrix:");
+        inputMatrix(scanner, matrix2, row, col);
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                resultMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+        System.out.println("First Matrix:");
+        displayMatrix(matrix1);
+        System.out.println("Second Matrix:");
+        displayMatrix(matrix2);
+        System.out.println("Result:");
+        displayMatrix(resultMatrix);
+        scanner.close();
+    }
+
+    private static void inputMatrix(Scanner scanner, int[][] matrix, int row, int col) {
+    for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+    System.out.printf("Enter element at position (%d,%d): ", i+1, j+1);
+    matrix[i][j] = scanner.nextInt();
+}
+}
+}
+    private static void displayMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+}
