@@ -1,1 +1,7 @@
 
+No, java does not allow you to create two constructors with the same parameter types but different parameter names. The parameter types must be different (in type, number, order) for method overloading to work. 
+
+for example: you cannot have both: as they have the same signature (one String parameter).
+DigitalVideoDisc(String title)
+DigitalVideoDisc(String category)
+
