@@ -20,8 +20,8 @@ public class Cart {
 */  
     
     // ham them nhieu dvd
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1) {
-        for (DigitalVideoDisc disc : dvd1) {
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+        for (DigitalVideoDisc disc : dvdList) {
             if (qtyOrdered < MAX_NUMBERS_ORDERED) {
                 itemsOrdered[qtyOrdered] = disc;
                 qtyOrdered++;
@@ -32,7 +32,7 @@ public class Cart {
         }
     }
     //overloaded method de them 2 dvd 
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvd1, DigitalVideoDisc[] dvd2) {
         if (qtyOrdered < MAX_NUMBERS_ORDERED - 1) {
             addDigitalVideoDisc(dvd1);
             addDigitalVideoDisc(dvd2);
@@ -40,9 +40,6 @@ public class Cart {
             System.out.println("Not enough space for both DVDs");
         }
     }
-
-
-
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemsOrdered[i] == disc) {
