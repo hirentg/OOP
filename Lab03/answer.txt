@@ -1,1 +1,13 @@
+1): Is JAVA a Pass by Value or a Pass by Reference programming language? 
+- Java is a "pass by value" programming language. In Java, when you pass an argument to a method, the value of the argument is copied and passed into the method. This means that if you change the value of the parameter inside the method, the value of the variable that called the method will not be affected.
 
+2) After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?"
+- Because Java is pass-by-value:
+  The swap method receives copies of the object references
+  Swapping these copies doesn't affect the original references in the calling method
+  The original variables still point to their original objects
+
+3)After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+- Though Java passes the reference by value (a copy), the copy still points to the same object in memory.
+When using the reference to modify the object's data (like setting title), it affects the actual object. We're not trying to change where the reference points, 
+just modifying the object it points to
