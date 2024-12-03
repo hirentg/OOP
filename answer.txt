@@ -1,1 +1,14 @@
+Alternatively, to compare items in the cart, instead of using Comparator, we can use the Comparable interface and override the compareTo()method. You can refer to the Java docs to see the information of this interface. 
+Suppose we are taking this Comparable interface approach.
 
+-	What class should implement the Comparable interface?
+The Media class should implement Comparable<Media>.
+
+-	In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+The compareTo method would need to implement one default comparison strategy.
+
+-	Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?\
+We cannot have multiple ordering rules using Comparable alone - this is why Comparator is better for multiple ordering strategies.
+
+-	Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+For different DVD ordering, we would need to override the compareTo method in the DVD class, but this could lead to inconsistent ordering behavior across media types.
